@@ -1,3 +1,4 @@
+from typing import OrderedDict
 import streamlit as st
 import os
 from src.utils import defaults
@@ -36,7 +37,7 @@ one_day_folder = get_interval_folder(data_folder)
 
 
 stocks_data = list(utils.get_all_files(one_day_folder))
-stocks = {i.split("/")[-1].split(".")[0]: i for i in stocks_data}
+stocks = OrderedDict({i.split("/")[-1].split(".")[0]: i for i in stocks_data})
 
 option = st.sidebar.selectbox("Select any one", list(stocks.keys()))
 
